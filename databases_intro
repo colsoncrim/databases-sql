@@ -2,9 +2,9 @@
 
     1. "A Clockwork Orange" (string)
     2. 42 (integer)
-    3. 09/02/1945 (integer)
+    3. 09/02/1945 (string)
     4. 98.7 (float)
-    5. $15.99 (integer)
+    5. $15.99 (float)
 
 
 
@@ -97,14 +97,26 @@
     FROM users
     WHERE name = 'DeAndre Data';
 
+    The result would be:
+    Email: datad@comcast.net
+    Signup: 2008-01-20
+
+
    -The user ID for the user with email 'aleesia.algorithm@uw.edu'.
 
    SELECT userid
    FROM users
    WHERE email = 'aleesia.algorithm@uw.edu';
 
+   The result would be:
+   Userid: 1
+
    -All the columns for the user ID equal to 4.
 
    SELECT *
    FROM users
    WHERE userid = 4;
+
+   The result would be:
+  userid    name            Email             signup
+   4 - Brandy Boolean - bboolean@nasa.gov - 1999-10-15
