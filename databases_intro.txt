@@ -2,9 +2,9 @@
 
     1. "A Clockwork Orange" (string)
     2. 42 (integer)
-    3. 09/02/1945 (string)
+    3. 09/02/1945 (date data type)
     4. 98.7 (float)
-    5. $15.99 (float)
+    5. $15.99 (money data type)
 
 
 
