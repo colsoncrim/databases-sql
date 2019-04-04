@@ -1,0 +1,201 @@
+1. List the commands for adding, updating, and deleting data.
+
+      INSERT INTO, UPDATE, DELETE FROM
+
+2. Explain the structure for each type of command.
+
+      INSERT INTO products (id, name, price)
+      VALUES
+      (11773, 'South Face Jacket', 174.99),
+      (11774, 'Big Mountain 2-Person Tent', 219.99),
+      (11775, 'King Cole Camp Stove', 34.99),
+      (11776, 'Oregon Trail Mountain Bike', 579.99);
+          This command inserts the columns id, name and price into the table named
+          products. It also adds the values of each cell under its corresponding
+          column.
+
+
+      UPDATE products SET price=159.99 WHERE id=11773;
+          This command will update the price of the product that has the id of
+          11773. You can also update multiple columns at once by running an UPDATE
+          statement like this:
+          UPDATE products SET price=39.99, name='King Cole Camping Stove' WHERE id=11775;
+
+
+      DELETE FROM products WHERE id=11776;
+          This command will delete the the product from the table that has the id
+          of 11776.
+
+
+
+3. What are some of the data types that can be used in tables? Give a real-world
+   example of each type.
+
+    Numeric data types such as an integer:
+    The age of a person.
+
+
+    Date and Time data types:
+    The date and time that a library book was checked out/in.
+
+
+    Character and String data types such as text:
+    The text on a message that was sent in a chat application.
+
+
+
+
+4. Decide how to create a new table to hold a list of people invited to a wedding
+   dinner. The table needs to have first and last names, whether they sent in their
+   RSVP, the number of guests they are bringing, and the number of meals (1 for
+   adults and 1/2 for children).
+
+   -Which data type would you use to store each of the following pieces of information?
+      -First and last name. (string)
+      -Whether they sent in their RSVP. (boolean)
+      -Number of guests. (integer)
+      -Number of meals. (float)
+
+  -Write a command that creates the table to track the wedding dinner.
+
+    CREATE TABLE dinner (
+      name text,
+      RSVP boolean,
+      guests integer,
+      meals float
+    );
+
+
+  -Write a command that adds a column to track whether the guest sent a thank you card.
+
+    ALTER TABLE dinner ADD COLUMN card boolean;
+
+
+  -You have decided to move the data about the meals to another table, so write a
+   command to remove the column storing the number meals from the wedding table.
+
+    ALTER TABLE dinner DROP COLUMN meals;
+
+
+  -The guests will need a place to sit at the reception, so write a command that
+   adds a column for table number.
+
+    ALTER TABLE dinner ADD COLUMN table integer;
+
+
+  -The wedding is over and we do not need to keep this information, so write a
+   command that deletes the table numbers from the database.
+
+    ALTER TABLE dinner DROP COLUMN table;
+
+
+
+5. Write a command to create a new table to hold the books in a library with the
+   columns ISBN, title, author, genre, publishing date, number of copies, and
+   available copies.
+
+     CREATE TABLE books (
+       ISBN integer,
+       title string,
+       author string,
+       genre string,
+       publishing date string,
+       number of copies integer,
+       available copies integer
+     );
+
+
+   -Find three books and add their information to the table.
+
+    INSERT INTO books (ISBN, title, author, genre, publishing date, number of copies, available copies)
+    VALUES
+    (123456, 'Rich Dad's Cashflow Quadrant', 'Robert T. Kiyosaki', 'Finance', 08/01/2011, 3, 2),
+    (123457, 'Deep Nutrition', 'Catherine Shanahan', 'Health', 01/01/2017, 2, 2),
+    (123458, 'The Lessons of History', 'Will & Ariel Durant', 'History', 02/01/2010, 3, 2);
+
+
+   -Someone has just checked out one of the books. Change the number of available
+    copies to 1 fewer.
+
+      UPDATE books SET available copies=1 WHERE ISBN=123456;
+
+
+   -Now one of the books has been added to the banned books list. Remove it from
+    the table.
+
+      DELETE FROM books WHERE ISBN=123457;
+
+
+6. Write a command to make a new table to hold spacecrafts. Information should
+   include id, name, year launched, country of origin, a brief description of the
+   mission, orbiting body, if it is currently operating, and its approximate miles
+   from Earth. In addition to the table creation, provide commands that perform
+   the following operations:
+
+   CREATE TABLE spacecrafts (
+     id integer,
+     name string,
+     year launched integer,
+     country string,
+     description string,
+     orbiting body string,
+     currently operating boolean,
+     miles from earth integer
+   );
+
+   -Add three non-Earth-orbiting satellites to the table.
+
+      INSERT INTO spacecrafts (orbiting body) VALUES ('Luna 10', 'Luna 11', 'Luna 12');
+
+
+   -Remove one of the satellites from the table since it has just crashed into the
+    planet.
+
+    DELETE FROM spacecrafts WHERE orbiting body='Luna 10';
+
+
+
+   -Edit another satellite because it is no longer operating and change the value
+    to reflect that.
+
+    UPDATE spacecrafts SET currently operating=false WHERE orbiting body='Luna 11';
+
+
+
+7. Write a command to create a new table to hold the emails in your inbox. This
+   table should include an id, the subject line, the sender, any additional
+   recipients, the body of the email, the timestamp, whether or not you have read
+   the email, and the id of the email chain it's in. Also provide commands that
+   perform the following operations:
+
+   CREATE TABLE inbox (
+     id integer,
+     subject line string,
+     cc string,
+     body string,
+     timestamp date/time,
+     read boolean,
+     email chain id integer
+   );
+
+
+   -Add three new emails to the inbox.
+
+    INSERT INTO inbox (id, subject, cc, body, timestamp, read, email chain id)
+    VALUES
+    (250, 'work order 1', 'John', 'please complete work order 1', 2019-01-01 00:00:01' UTC, true, 30),
+    (350, 'work order 2', 'Karen', 'please complete work order 2', 2019-02-01 00:00:01' UTC, true, 31),
+    (450, 'work order 3', 'Kim', 'please complete work order 3', 2019-03-01 00:00:01' UTC, true, 32);
+
+
+
+   -You deleted one of the emails, so write a command to remove the row from the
+    inbox table.
+
+    DELETE FROM inbox WHERE id=250;
+
+   -You started reading an email but just heard a crash in another room. Mark the
+    email as unread before investigating the crash, so you can come back and read
+    it later.
+
+    UPDATE inbox SET read=false WHERE id=350;
